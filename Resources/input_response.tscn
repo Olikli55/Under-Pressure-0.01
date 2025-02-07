@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxw2fwuxafh1k"]
+
+[ext_resource type="Script" path="res://Resources/input_response.gd" id="1_a3igc"]
+[ext_resource type="FontFile" uid="uid://daw0srmudvmtb" path="res://Resources/ByteBounce.ttf" id="2_tq42x"]
+
+[node name="Input_response" type="VBoxContainer" node_paths=PackedStringArray("input_history_label", "response_label")]
+script = ExtResource("1_a3igc")
+input_history_label = NodePath("Input_history")
+response_label = NodePath("Response")
+
+[node name="Input_history" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.580392)
+theme_override_fonts/font = ExtResource("2_tq42x")
+theme_override_font_sizes/font_size = 28
+
+[node name="Response" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_tq42x")
+theme_override_font_sizes/font_size = 28
+text = " "

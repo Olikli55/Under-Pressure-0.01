@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0dfafayiadow"]
+
+[ext_resource type="Script" path="res://Resources/radar_terain.gd" id="1_sr2g2"]
+[ext_resource type="Texture2D" uid="uid://cspyei7j14nqn" path="res://Assets/RocksTileset.png" id="1_yf4hv"]
+[ext_resource type="Script" path="res://Resources/radarSubmarine.gd" id="3_1878w"]
+[ext_resource type="Texture2D" uid="uid://dqkys3om4rv6m" path="res://Assets/submarine_out.png" id="3_d2puc"]
+[ext_resource type="Texture2D" uid="uid://cv3uuq7fgxh2e" path="res://Resources/noise.tres" id="3_v8gn8"]
+[ext_resource type="Script" path="res://Resources/raysOfRadar.gd" id="4_vippy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7rxvv"]
+texture = ExtResource("1_yf4hv")
+texture_region_size = Vector2i(64, 64)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_5tuci"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 4
+sources/0 = SubResource("TileSetAtlasSource_7rxvv")
+
+[node name="RadarLevel" type="Node2D"]
+
+[node name="terrain" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_5tuci")
+script = ExtResource("1_sr2g2")
+noise_hight_texture_terrain = ExtResource("3_v8gn8")
+
+[node name="Submarine" type="CharacterBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_1878w")
+
+[node name="SubmarineOut" type="Sprite2D" parent="Submarine"]
+scale = Vector2(6, 6)
+texture = ExtResource("3_d2puc")
+
+[node name="Camera2D" type="Camera2D" parent="Submarine"]
+zoom = Vector2(0.2, 0.2)
+
+[node name="radarRays" type="Node2D" parent="Submarine"]
+scale = Vector2(6, 6)
+script = ExtResource("4_vippy")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Submarine"]
+visible = false
+scale = Vector2(6, 6)
+polygon = PackedVector2Array(-98, 17, -98, -32, -96, -34, -51, -34, -51, -63, -50, -64, 2, -64, 18, -34, 111, -34, 113, -32, 113, 17, 66, 64, -82, 64, -84, 62, -84, 30)
+metadata/_edit_lock_ = true

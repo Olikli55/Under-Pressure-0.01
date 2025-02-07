@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=3 uid="uid://cih35chtctqow"]
+
+[ext_resource type="Script" path="res://Resources/terminal.gd" id="1_jog2a"]
+[ext_resource type="Script" path="res://Resources/input.gd" id="2_ewpqh"]
+[ext_resource type="FontFile" uid="uid://daw0srmudvmtb" path="res://Resources/ByteBounce.ttf" id="2_x51da"]
+[ext_resource type="Script" path="res://Resources/command_procesor.gd" id="3_yf6tg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aahrn"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsptx"]
+bg_color = Color(0.03, 0.03, 0.03, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yudi"]
+bg_color = Color(0.06, 0.06, 0.06, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hyg08"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nutsf"]
+
+[node name="Terminal" type="Control" node_paths=PackedStringArray("history_container", "scroll", "command_procesor")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jog2a")
+history_container = NodePath("Background/MarginContainer/Rows/Terminal_info/Scroll/History")
+scroll = NodePath("Background/MarginContainer/Rows/Terminal_info/Scroll")
+command_procesor = NodePath("CommandProcesor")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aahrn")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Rows" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+
+[node name="Terminal_info" type="PanelContainer" parent="Background/MarginContainer/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_jsptx")
+
+[node name="Scroll" type="ScrollContainer" parent="Background/MarginContainer/Rows/Terminal_info"]
+layout_mode = 2
+scroll_horizontal_custom_step = 0.0
+
+[node name="History" type="VBoxContainer" parent="Background/MarginContainer/Rows/Terminal_info/Scroll"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Input_area" type="PanelContainer" parent="Background/MarginContainer/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3yudi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/Rows/Input_area"]
+layout_mode = 2
+
+[node name="Caret" type="Label" parent="Background/MarginContainer/Rows/Input_area/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x51da")
+theme_override_font_sizes/font_size = 40
+text = " >"
+
+[node name="Input" type="LineEdit" parent="Background/MarginContainer/Rows/Input_area/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_x51da")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hyg08")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nutsf")
+placeholder_text = "Type Command..."
+max_length = 150
+caret_blink = true
+script = ExtResource("2_ewpqh")
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 2
+text = "clear, gn on/off,st,dr unlock/lock"
+
+[node name="CommandProcesor" type="Node" parent="."]
+script = ExtResource("3_yf6tg")
+
+[connection signal="text_submitted" from="Background/MarginContainer/Rows/Input_area/HBoxContainer/Input" to="." method="_on_input_text_submitted"]
+[connection signal="text_submitted" from="Background/MarginContainer/Rows/Input_area/HBoxContainer/Input" to="Background/MarginContainer/Rows/Input_area/HBoxContainer/Input" method="_on_text_submitted"]

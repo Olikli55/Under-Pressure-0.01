@@ -1,0 +1,212 @@
+[gd_scene load_steps=21 format=3 uid="uid://di8uxh5lbt45h"]
+
+[ext_resource type="Texture2D" uid="uid://os80k07ps5jy" path="res://Assets/Water.png" id="1_gllhv"]
+[ext_resource type="Texture2D" uid="uid://cspyei7j14nqn" path="res://Assets/RocksTileset.png" id="2_e2q0d"]
+[ext_resource type="Script" path="res://Resources/world.gd" id="2_jyph7"]
+[ext_resource type="PackedScene" uid="uid://dnjls1vjnjjfm" path="res://Resources/player.tscn" id="3_hgqcv"]
+[ext_resource type="PackedScene" uid="uid://dw7tiq64qysqj" path="res://Resources/out_sub.tscn" id="5_oi6ne"]
+[ext_resource type="Script" path="res://Resources/terrain.gd" id="5_pappw"]
+[ext_resource type="Texture2D" uid="uid://kfau7415wfgk" path="res://Assets/OreTileset.png" id="6_650am"]
+[ext_resource type="Texture2D" uid="uid://cv3uuq7fgxh2e" path="res://Resources/noise.tres" id="6_gjrgv"]
+[ext_resource type="Script" path="res://Resources/ores.gd" id="6_wdd28"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8btvd"]
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_65elw"]
+texture = ExtResource("2_e2q0d")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_8btvd")
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/left_side = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_side = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_side = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/left_side = 0
+1:2/0/terrains_peering_bit/top_side = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4f0m"]
+resource_name = "NoShadow"
+texture = ExtResource("2_e2q0d")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_48b2a"]
+tile_size = Vector2i(64, 64)
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 13
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.46, 0.46, 0.46, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_65elw")
+sources/1 = SubResource("TileSetAtlasSource_e4f0m")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_14lti"]
+texture = ExtResource("6_650am")
+texture_region_size = Vector2i(64, 64)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/probability = 0.5
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+1:0/0/probability = 0.5
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_nxle3"]
+tile_size = Vector2i(64, 64)
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 13
+sources/0 = SubResource("TileSetAtlasSource_14lti")
+
+[sub_resource type="Gradient" id="Gradient_5cp35"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.787356)
+colors = PackedColorArray(0, 0, 0, 1, 0.65098, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gvo4t"]
+frequency = 0.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ppa1q"]
+color_ramp = SubResource("Gradient_5cp35")
+noise = SubResource("FastNoiseLite_gvo4t")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ldvbm"]
+texture = ExtResource("2_e2q0d")
+texture_region_size = Vector2i(64, 64)
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_q2j73"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_ldvbm")
+
+[node name="Level" type="Node2D"]
+
+[node name="Player" parent="." node_paths=PackedStringArray("subSpawnpoint") instance=ExtResource("3_hgqcv")]
+position = Vector2(85, 13)
+subSpawnpoint = NodePath("../Out_sub/Marker2D")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.1, 0.1)
+
+[node name="World" type="Node2D" parent="." node_paths=PackedStringArray("ore_layer", "water_layer", "terrain_layer")]
+script = ExtResource("2_jyph7")
+ore_layer = NodePath("ore_layer")
+water_layer = NodePath("Water2")
+terrain_layer = NodePath("terrain_layer")
+
+[node name="Water" type="Sprite2D" parent="World"]
+visible = false
+z_index = -1
+position = Vector2(13, 22)
+scale = Vector2(80, 80)
+texture = ExtResource("1_gllhv")
+metadata/_edit_lock_ = true
+
+[node name="terrain_layer" type="TileMapLayer" parent="World"]
+tile_set = SubResource("TileSet_48b2a")
+script = ExtResource("5_pappw")
+noise_hight_texture_terrain = ExtResource("6_gjrgv")
+metadata/_edit_lock_ = true
+
+[node name="ore_layer" type="TileMapLayer" parent="World"]
+tile_set = SubResource("TileSet_nxle3")
+script = ExtResource("6_wdd28")
+noise_height = SubResource("NoiseTexture2D_ppa1q")
+metadata/_edit_lock_ = true
+
+[node name="Water2" type="TileMapLayer" parent="World"]
+z_index = -5
+tile_set = SubResource("TileSet_q2j73")
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="Out_sub" parent="." instance=ExtResource("5_oi6ne")]
+position = Vector2(634, -850)
+
+[node name="Marker2D" type="Marker2D" parent="Out_sub"]
+position = Vector2(-528, 274)
+
+[node name="Label" type="Label" parent="Out_sub"]
+offset_left = -518.0
+offset_top = 217.0
+offset_right = -380.0
+offset_bottom = 240.0
+rotation = 1.56574
+text = "Here press ENTER"
